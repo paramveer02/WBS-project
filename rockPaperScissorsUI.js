@@ -5,6 +5,7 @@ const resetButton = document.getElementById("reset-btn");
 const scoreEl = document.querySelector(".score");
 const leagueEl = document.querySelector(".league");
 const roundResultEl = document.getElementById("round-result");
+const body = document.body;
 
 const options = ["rock", "paper", "scissor"];
 
@@ -46,10 +47,13 @@ buttons.forEach((button) => {
     if (roundCount === 3) {
       if (userWins > computerWins) {
         leagueEl.textContent = "You 👨🏻‍🦱 win the League! 🏆";
+        body.classList.add("bg-green-800");
       } else if (computerWins > userWins) {
         leagueEl.textContent = "Computer 💻 wins the League! 🏆";
+        body.classList.add("bg-red-800");
       } else {
         leagueEl.textContent = "⚖️ The League is a Draw!";
+        body.classList.add("bg-yellow-700");
       }
     }
     roundCount++;
@@ -63,4 +67,7 @@ resetButton.addEventListener("click", () => {
   roundResultEl.textContent = "";
   scoreEl.textContent = `Round: ${roundCount} | You: 0 - Computer: 0`;
   leagueEl.textContent = "";
+
+  body.className =
+    "bg-black text-gray-100 font-mono h-screen flex items-center justify-center";
 });
